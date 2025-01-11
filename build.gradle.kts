@@ -7,16 +7,15 @@ plugins {
 }
 
 android {
-    namespace = "exa.sa.myappwael" // استبدلها بـ namespace الخاص بمشروعك.
-    compileSdk = 35 // ضع إصدار SDK المطلوب هنا.
+    namespace = "exa.sa.myappwael"
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "exa.sa.myappwael"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-        signingConfig = signingConfigs.getByName("debug")
     }
 
     buildTypes {
@@ -41,7 +40,6 @@ android {
     buildFeatures {
         compose = true
     }
-    buildToolsVersion = "35.0.0"
 }
 buildscript {
     repositories {
@@ -50,5 +48,7 @@ buildscript {
     }
     dependencies {
         classpath (libs.androidx.room.gradle.plugin)
+        classpath(libs.gradle)
+
     }
 }

@@ -7,6 +7,17 @@ plugins {
 }
 
 android {
+    sourceSets {
+        getByName("main") {
+            manifest.srcFile("src/main/AndroidManifest.xml")
+        }
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
+    }
+
     namespace = "exa.sa.myappwael"
     compileSdk = 35
 
@@ -55,12 +66,14 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.material3)
     implementation(libs.androidx.navigation.compose.v260)
-    kapt (libs.room.compiler)
+    implementation(libs.support.annotations)
+    kapt(libs.room.compiler)
     implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.gson)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
