@@ -1,23 +1,28 @@
 pluginManagement {
+    // تعريف مستودعات شائعة
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    // تعيين وضع المستودعات إلى PREFER_PROJECT للسماح ببعض المرونة
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
     repositories {
         google()
         mavenCentral()
     }
 }
 
-rootProject.name = "My App Wael"
+// التحقق من وجود الوحدة "app"
+if (file("app").exists().not()) {
+    throw GradleException("Module 'app' is missing. Make sure it exists in the root directory.")
+}
+
+// تعيين اسم المشروع الجذر
+rootProject.name = "MyAppWael"
+
+// تضمين الوحدة "app"
 include(":app")

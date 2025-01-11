@@ -1,14 +1,14 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-    id("kotlin-kapt")  // No need to add 'com.android.application' here, alias already included
+    id("kotlin-kapt")
     id("com.github.ben-manes.versions") version "0.51.0"
 }
 
 android {
     sourceSets {
         getByName("main") {
+            // المسار الصحيح للـ AndroidManifest.xml
             manifest.srcFile("src/main/AndroidManifest.xml")
         }
         kapt {
@@ -63,17 +63,15 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigation.compose)
     implementation(libs.material3)
-    implementation(libs.androidx.navigation.compose.v260)
-    implementation(libs.support.annotations)
-    kapt(libs.room.compiler)
-    implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.room.ktx)
     implementation(libs.gson)
+    implementation(libs.androidx.compose.bom)
+    implementation(libs.androidx.compiler)
+    implementation(libs.androidx.lifecycle.livedata.ktx.v290alpha08)
+    implementation(libs.androidx.room.runtime.v270alpha12)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

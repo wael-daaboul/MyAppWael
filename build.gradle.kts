@@ -1,9 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-    id ("com.github.ben-manes.versions") version "0.51.0"
-
+    id("com.github.ben-manes.versions") version "0.51.0"
 }
 
 android {
@@ -34,21 +32,24 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 
     buildFeatures {
         compose = true
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.2" // تأكد من التوافق مع إصدار Compose
+    }
 }
+
 buildscript {
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath (libs.androidx.room.gradle.plugin)
-        classpath(libs.gradle)
-
+        classpath(libs.androidx.room.gradle.plugin)
     }
 }
